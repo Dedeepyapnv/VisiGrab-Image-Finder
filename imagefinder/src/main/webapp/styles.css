@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .header {
+      background-color: #aeb6b6;
+    padding: 30px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    }
+    
+  
+  /* Style the content */
+  .container {
+      text-align:center;
+    background-color: #ddd;
+    padding: 10px;
+    height: 400px;
+    
+     /* Should be removed. Only for demonstration */
+  }
+  .container input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  .container button
+  {
+  background-color: #008CBA;
+  color:white;
+  padding: 10px 24px;
+  border-radius: 12px;
+  }
+  
+  /* Style the footer */
+  .about-me {
+    background-color: #031403;
+    padding: 10px;
+    
+  }
+  .about-me h2{
+      text-align: center;
+      color: #ffffff;
+     }
+    .about-me p
+    {
+      color: #ffffff;
+      text-align: center;
+      animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+    }

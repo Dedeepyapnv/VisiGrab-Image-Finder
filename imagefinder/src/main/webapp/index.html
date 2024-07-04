@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisiGrab - Image Downloader</title>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    .header {
+      background-color: #F19ED2;
+      padding: 30px;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Style the content */
+    .container {
+      text-align:center;
+      background-color: #F7F9F2;
+      padding: 10px;
+      height: 1000px;
+      width:100%;
+    }
+  
+    .container input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+  
+    .container button {
+      background-color: #E8C5E5;
+      color:white;
+      padding: 10px 24px;
+      border-radius: 12px;
+      margin: 5px;
+    }
+  
+    /* Style the footer */
+    .about-me {
+      background-color: #E8C5E5;
+      padding: 10px;
+    }
+  
+    .about-me h2 {
+      text-align: center;
+      color: #ffffff;
+    }
+  
+    .about-me p {
+      color: #ffffff;
+      text-align: center;
+      animation: typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1><i>VisiGrab</i></h1>
+  </div>
+
+  <div class="about-me"> 
+    <h2>About Me</h2>
+    <p> 
+      Hello!! I'm <i>Dedeepya</i>.<br> Firstly, grateful for the opportunity provided!!<br>This is my web application - <b><i>VisiGrab</i></b>, which ultimately displays the images present in a given URL.<br>
+      Give it a Try !!
+    </p>
+  </div>
+
+  <div class="container">  
+    <h1>Image Downloader</h1>
+    <form id="url-form">
+      <label for="url-input" class="form-label"> </label>
+      <input type="text" id="url-input" name="url" class="form-control" placeholder="Enter a webpage URL containing images">
+      <button type="submit" id="get-images-btn" class="btn btn-primary">Get Images!!</button>
+      <button type="submit" id="get-urls-btn" class="btn btn-primary">Get URLs!!</button>
+    </form>
+
+    <div id="image-container" class="row"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("url-form");
+    const imageContainer = document.getElementById("image-container");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      const url = document.getElementById("url-input").value;
+      if (!url) {
+        alert("Please enter a URL.");
+        return;
+      }
+
+      let action = "";
+      if (event.submitter.id === "get-images-btn") {
+        action = "getHtmlContent";
+      } else if (event.submitter.id === "get-urls-btn") {
+        action = "getJsonArray";
+      }
+
+      const response = await fetch(`/getImages?url=${encodeURIComponent(url)}&action=${action}`);
+      if (action === "getHtmlContent") {
+        const htmlContent = await response.text();
+        imageContainer.innerHTML = htmlContent;
+      } else if (action === "getJsonArray") {
+        const jsonImageUrls = await response.json();
+        imageContainer.innerHTML = ""; // Clear previous content
+
+        jsonImageUrls.forEach(image => {
+          const urlElement = document.createElement("p");
+          urlElement.textContent = image.url;
+          imageContainer.appendChild(urlElement);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

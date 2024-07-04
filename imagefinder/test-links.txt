@@ -1,0 +1,67 @@
+Please paste your list of test URLs below:
+
+https://www.zomato.com/pune/bubble-bee-aundh/photos
+https://en.wikipedia.org/wiki/Facebook
+https://en.wikipedia.org/wiki/Dog_breed
+https://www.amazon.com/
+https://merchants.ubereats.com/us/en/s/signup/
+https://www.shutterstock.com/?cr=c&gad_source=1&gclid=CjwKCAjwvvmzBhA2EiwAtHVrb2dzr1P_Z4Ls1R5R-jZHf-Dy7PbPOt4JltMHNsPPZQZXIFIvC5dGKRoCOo0QAvD_BwE&gclsrc=aw.ds&kw=&pl=PPC_GOO_US_FT_PM-
+https://unsplash.com/photos/a-plate-of-purple-cake-next-to-a-fork-iwQ6hjzVaEo
+https://zapier.com/blog/best-free-stock-photos/
+https://unsplash.com/s/photos/web
+https://www.swiggy.com/about-us/
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<div class="container">  <h1 class="text-center mt-3">Image Downloader</h1>
+    <form id="url-form" class="mb-3">
+      <div class="row">
+        <div class="col-md-8">
+          <label for="url-input" class="form-label"> </label>
+          <input type="text" id="url-input" name="url" class="form-control" placeholder="Enter a webpage URL containing images">
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary">Download Images</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="image-container" class="row"></div>
+  </div>
+
+
+
+  
+.custom-heading {
+    font-family: Arial, sans-serif; /* Custom font for heading */
+    color: #333; /* Custom color for heading */
+  }
+  
+  .custom-button {
+    background-color: #007bff; /* Custom background color for button */
+    border-color: #007bff; /* Custom border color for button */
+  }
+  
+  .downloaded-image {
+    margin: 10px; /* Spacing between images */
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: 200px; /* Set a fixed width for each image */
+    display: inline-block; /* Display images side-by-side */
+    border-radius: 5px; /* Rounded corners for image containers */
+  }
+  
+  .downloaded-image img {
+    width: 100%; /* Make image fill the width of the container */
+    height: auto; /* Maintain aspect ratio */
+  }
